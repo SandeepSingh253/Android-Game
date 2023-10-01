@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "663147859519",
+    "project_id": "classic-realm",
+    "storage_bucket": "classic-realm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663147859519:android:f95bde25d672ae5b85b28a",
+        "android_client_info": {
+          "package_name": "com.team.classicrealm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFBFaohcXmgjh9P57dEcRJLqIbZyF86DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
