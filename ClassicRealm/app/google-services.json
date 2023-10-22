@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "294124537268",
+    "firebase_url": "https://classicrealm-843fd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "classicrealm-843fd",
+    "storage_bucket": "classicrealm-843fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294124537268:android:66f589166f40a3ade31ee1",
+        "android_client_info": {
+          "package_name": "com.team.classicrealm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD7kFu1aIBxcG_Ei2g06KhgFiHLxsTyTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
