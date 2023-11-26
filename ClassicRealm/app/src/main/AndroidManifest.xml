@@ -12,13 +12,58 @@
         android:theme="@style/Theme.ClassicRealm"
         tools:targetApi="31">
         <activity
+            android:name=".Tennis.TennisMenu"
+            android:exported="false" />
+        <activity
+            android:name=".BlockBreaker.BlockBreakerMenu"
+            android:exported="false" />
+        <activity
+            android:name=".BlockBreaker.BlockBreakerGameOver"
+            android:exported="false" />
+        <activity
+            android:name=".BlockBreaker.BlockBreakerGame"
+            android:exported="false" />
+        <activity
+            android:name=".SpaceShooter.SpaceShooterGameOver"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Offline.TicTacOfflineResultDialog"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Offline.TicTacOffline"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Offline.TicTacOfflinePlayerSelec"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.TicTacToeMenu"
+            android:exported="false" />
+        <activity
+            android:name=".SpaceShooter.SpaceShooterMenu"
+            android:exported="false" />
+        <activity
             android:name=".GamesScreen.GamesScreen"
             android:exported="false" />
         <activity
-            android:name=".MainScreen.MainActivity"
+            android:name=".MainScreen.MainMenu"
             android:exported="false" />
         <activity
-            android:name=".MainScreen.MainMenu"
+            android:name=".TicTacToe.Online.TicTacOnlinePlayerSelec"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Online.TicTacOnline"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Online.TicTacOnlineWaitingRoom"
+            android:exported="false" />
+        <activity
+            android:name=".TicTacToe.Online.TicTacOnlineResultDialog"
+            android:exported="false" />
+        <activity
+            android:name=".UserNameSetUp.UserNameSetup"
+            android:exported="false" />
+        <activity
+            android:name=".ScoreBoard.ScoreBoard"
             android:exported="false" />
         <activity
             android:name=".SplashScreen.SplashScreen"

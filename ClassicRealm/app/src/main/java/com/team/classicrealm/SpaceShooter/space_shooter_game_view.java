@@ -2,12 +2,18 @@ package com.team.classicrealm.SpaceShooter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Handler;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -22,8 +28,12 @@ public class space_shooter_game_view extends View {
     private final Context context;
     private Point displaySize;
     private Rect backgroundRect;
-    private int numUFO=4;
+
+    private Paint textPaint;
+    private int numUFO=3;
     private UFO[] ufos=new UFO[numUFO];
+
+    private int curScore=0;
 
     private ArrayList<Beam> beamsShot=new ArrayList<Beam>();
 
@@ -35,19 +45,30 @@ public class space_shooter_game_view extends View {
 
     private int frameNum=0;
     private int frameMark=10;
+    private int heartOverlap=20;
+    private int heartPadding=70;
+
+    private final float textSize=50;
+
+    private int hp=Constants.SPACE_SHOOTER_HP;
+
+    private boolean isFinished=false;
     public space_shooter_game_view(Context context) {
         super(context);
         this.context=context;
         init();
+        //starts in runUfoAnim()
         runnable=new Runnable() {
             @Override
             public void run() {
-                if(frameNum==frameMark){
-                    frameNum=0;
-                    shotBeam();
+                if(!isFinished) {
+                    if (frameNum == frameMark) {
+                        frameNum = 0;
+                        shotBeam();
+                    }
+                    frameNum++;
+                    invalidate();
                 }
-                frameNum++;
-                invalidate();
             }
         };
     }
@@ -60,14 +81,34 @@ public class space_shooter_game_view extends View {
 
     private void init() {
         displaySize=new Point();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getSize(displaySize);
+        int width= context.getResources().getDisplayMetrics().widthPixels;
+        int height=context.getResources().getDisplayMetrics().heightPixels + getNavigationBarHeight();;
+        displaySize.set(width,height);
+        textPaint=new Paint();
+        textPaint.setTextSize(textSize);
+        textPaint.setColor(Color.GRAY);
         handler=new Handler();
         shooter=new Shooter(context);
-        shooter.setLoc(displaySize.x/2 - shooter.getWidth()/2, displaySize.y- shooter.getHeight());
+        shooter.setLoc(displaySize.x/2 - shooter.getWidth()/2, displaySize.y- 2*shooter.getHeight());
         for(int i=0;i<numUFO;i++) {
             ufos[i] = new UFO(context);
             ufos[i].setLoc(displaySize.x+ran.nextInt(UFO.SPAWN_MAX_X),ran.nextInt(UFO.SPAWN_MAX_Y));
         }
+    }
+
+    private int getNavigationBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
     }
 
     @Override
@@ -76,6 +117,32 @@ public class space_shooter_game_view extends View {
         drawShooter(canvas);
         runUfoAnim(canvas);
         runShootAnim(canvas);
+        drawHP(canvas);
+        drawScore(canvas);
+        checkGameOverStatus();
+    }
+
+    private void drawScore(Canvas canvas) {
+        canvas.drawText("score:"+curScore,20,40,textPaint);
+    }
+
+    private void checkGameOverStatus() {
+        if(hp<1){
+            isFinished=true;
+            Intent i= new Intent(context,SpaceShooterGameOver.class);
+            ((Activity)context).finish();
+            i.putExtra(Constants.INTENT_KEY_SCORE,curScore);
+            context.startActivity(i);
+        }
+    }
+
+    private void drawHP(Canvas canvas) {
+        for(int i =1;i<=hp;i++){
+            Bitmap heart = BitmapFactory.decodeResource(getResources(), R.drawable.spaceshooter_hp);
+            int left=displaySize.x-(i*heart.getWidth())-heartPadding;
+            backgroundRect = new Rect(left, 0,left+heart.getWidth()+heartOverlap,heart.getHeight());
+            canvas.drawBitmap(heart,null,backgroundRect,null);
+        }
     }
 
     private void runShootAnim(Canvas canvas) {
@@ -91,7 +158,11 @@ public class space_shooter_game_view extends View {
                     collided=true;
                 }
             }
-            if(collided) beamsShot.remove(beamsShot.get(i));
+            if(collided) {
+                beamsShot.remove(beamsShot.get(i));
+                curScore+=Constants.SPACE_SHOOTER_SCORE_PER_UFO;
+            }
+
         }
         removeOutOfScreenBeam();
     }
@@ -110,6 +181,7 @@ public class space_shooter_game_view extends View {
             canvas.drawBitmap(ufo.nextFrame(), ufo.getLoc().x, ufo.getLoc().y, null);
             ufo.getLoc().x = ufo.getLoc().x - ufo.getVelocity();
             if (ufo.getLoc().x < -ufo.getWidth()) {
+                hp--;
                 ufo.reSpawn(canvas.getWidth());
             }
         }
@@ -120,6 +192,11 @@ public class space_shooter_game_view extends View {
         Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.spaceshooter_background);
         backgroundRect = new Rect(0, 0, displaySize.x,displaySize.y);
         canvas.drawBitmap(background,null,backgroundRect,null);
+    }
+
+    public void resetGame(){
+        curScore=0;
+        hp=Constants.SPACE_SHOOTER_HP;
     }
 
     @Override

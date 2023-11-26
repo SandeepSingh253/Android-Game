@@ -13,7 +13,20 @@
           "package_name": "com.team.classicrealm"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "294124537268-qihbkvd8hu7jbbnqmhpb66lo2r8u4n81.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team.classicrealm",
+            "certificate_hash": "ea6faf37f59be5f87cb883d174de83438bf0bb6f"
+          }
+        },
+        {
+          "client_id": "294124537268-598qj07t7igl5vcfr62ra5miii66v6s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBD7kFu1aIBxcG_Ei2g06KhgFiHLxsTyTs"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294124537268-598qj07t7igl5vcfr62ra5miii66v6s9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -51,7 +51,7 @@ public class UFO {
         ufoAnim[0]= BitmapFactory.decodeResource(context.getResources(), R.drawable.spaceshooter_frame0);
         ufoAnim[1]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame1);
         ufoAnim[2]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame2);
-        ufoAnim[3]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_rame3);
+        ufoAnim[3]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame3);
         ufoAnim[4]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame4);
         ufoAnim[5]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame5);
         ufoAnim[6]=BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceshooter_frame6);

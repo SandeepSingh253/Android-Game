@@ -42,7 +42,7 @@ public class Beam {
     }
 
     public void move(){
-        loc.y=loc.y- Constants.SHOT_SPEED;
+        loc.y=loc.y- Constants.SPACE_SHOOTER_SHOT_SPEED;
     }
 
     public HitBox getHitbox(){
