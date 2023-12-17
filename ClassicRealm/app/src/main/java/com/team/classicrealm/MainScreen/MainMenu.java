@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.ScoreBoard;
@@ -40,7 +42,6 @@ public class MainMenu extends AppCompatActivity {
         initViews();
         startBGAnim();
         startBGMusic();
-
     }
 
     private void startBGAnim() {
@@ -78,16 +79,22 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void playButtonClickEvent(View view){
+        ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_play_pressed));
         Intent i = new Intent(getApplicationContext(), GamesScreen.class);
         startActivity(i);
         finish();
     }
 
     public void scoreButtonClickEvent(View view){
+        playButtonSound();
         Intent i = new Intent(getApplicationContext(), ScoreBoard.class);
         i.putExtra(Constants.INTENT_KEY_USER_NAME,userName);
         finish();
         startActivity(i);
+    }
+
+    private void playButtonSound() {
+        MusicManager.getInstance().play(this,R.raw.button_sound);
     }
 
     public void playPauseMusic(View view){

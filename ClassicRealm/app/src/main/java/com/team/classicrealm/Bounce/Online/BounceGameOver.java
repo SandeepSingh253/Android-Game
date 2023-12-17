@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.team.classicrealm.Bounce.BounceMenu;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.UpdateScore;
 
@@ -45,7 +46,7 @@ public class BounceGameOver extends AppCompatActivity {
         bounceGameoverBackB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), BounceMenu.class);
+                Intent i=new Intent(getApplicationContext(), GamesScreen.class);
                 finish();
                 startActivity(i);
             }

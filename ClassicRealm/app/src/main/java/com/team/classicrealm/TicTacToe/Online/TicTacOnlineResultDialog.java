@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.UpdateScore;
 
@@ -59,7 +60,7 @@ public class TicTacOnlineResultDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).setValue(true);
-                Intent i=new Intent(game.getApplicationContext(), TicTacOnlinePlayerSelec.class);
+                Intent i=new Intent(game.getApplicationContext(), GamesScreen.class);
                 game.startActivity(i);
                 dismiss();
                 game.finish();

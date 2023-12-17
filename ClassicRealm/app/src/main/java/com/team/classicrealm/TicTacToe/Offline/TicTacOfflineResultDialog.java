@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
@@ -33,7 +34,7 @@ public class TicTacOfflineResultDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 game.finish();
-                game.startActivity(new Intent(game, TicTacToeMenu.class));
+                game.startActivity(new Intent(game, GamesScreen.class));
                 dismiss();
             }
         });

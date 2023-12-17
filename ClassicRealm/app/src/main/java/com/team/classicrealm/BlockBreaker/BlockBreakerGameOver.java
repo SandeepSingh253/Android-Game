@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.UpdateScore;
 
@@ -39,6 +40,8 @@ public class BlockBreakerGameOver extends AppCompatActivity {
     }
 
     public void exit(View view) {
+        Intent intent = new Intent(BlockBreakerGameOver.this, GamesScreen.class);
+        startActivity(intent);
         finish();
     }
 
