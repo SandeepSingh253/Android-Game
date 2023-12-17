@@ -35,8 +35,8 @@ public class SpaceShooterMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getApplicationContext(), GamesScreen.class);
-                finish();
                 startActivity(i);
+                finish();
             }
         });
     }

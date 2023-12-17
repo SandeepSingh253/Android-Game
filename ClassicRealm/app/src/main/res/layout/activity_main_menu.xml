@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242"
+        app:layout_constraintVertical_bias="0.259"
         app:srcCompat="@drawable/app_logo" />
 
     <ImageButton
@@ -36,49 +36,53 @@
 
     <TextView
         android:id="@+id/mainMenuUserNameTV"
-        android:layout_width="159dp"
-        android:layout_height="32dp"
+        android:layout_width="212dp"
+        android:layout_height="51dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="55dp"
         android:gravity="center"
         android:text="user name"
-        android:textColor="#D53F51B5"
-        android:textSize="20sp"
+        android:textColor="#D5FFFFFF"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/pausePlayMusicButton"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/playButton"
         android:layout_width="156dp"
         android:layout_height="69dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="196dp"
         android:backgroundTint="#00FFFFFF"
         android:onClick="playButtonClickEvent"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenuUserNameTV"
-        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/button_play" />
 
     <ImageButton
         android:id="@+id/scoreButton"
         android:layout_width="163dp"
         android:layout_height="61dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginBottom="104dp"
         android:backgroundTint="#00FFFFFF"
         android:onClick="scoreButtonClickEvent"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playButton"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/button_score" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

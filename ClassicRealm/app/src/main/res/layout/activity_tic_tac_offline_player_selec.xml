@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/tictactoe_pagebkg"
+    android:background="@drawable/tictactoe_page_player_selec_bkg"
     tools:context=".TicTacToe.Offline.TicTacOfflinePlayerSelec">
 
     <androidx.cardview.widget.CardView
@@ -69,6 +69,16 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/cyan"
                 android:text="Start Game"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/ticTacOfflinePlayerSlecBackB"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/cyan"
+                android:text="Back"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 

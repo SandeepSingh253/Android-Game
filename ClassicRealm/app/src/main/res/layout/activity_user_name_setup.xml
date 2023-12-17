@@ -4,30 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/username_setup_bg"
     tools:context=".UserNameSetup">
 
     <EditText
         android:id="@+id/userNameEditText"
-        android:layout_width="339dp"
-        android:layout_height="49dp"
+        android:layout_width="298dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="284dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/setUserNameButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <Button
         android:id="@+id/setUserNameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="148dp"
+        android:layout_height="58dp"
+        android:backgroundTint="#FE3131"
+        android:text="Done"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594" />
+        app:layout_constraintVertical_bias="0.915" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

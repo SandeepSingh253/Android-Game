@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.team.classicrealm.GameUtility.Constants;
 import com.team.classicrealm.GamesScreen.GamesScreen;
@@ -25,8 +26,8 @@ public class SpaceShooterGameOver extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         hideSystemUI();
 
-        Button restart = findViewById(R.id.restartSpaceShooter);
-        Button back=findViewById(R.id.ssBackToMenu);
+        ImageButton restart = findViewById(R.id.restartSpaceShooter);
+        ImageButton back=findViewById(R.id.ssBackToMenu);
         int score=getIntent().getIntExtra(Constants.INTENT_KEY_SCORE,Constants.DEFAULT_VALUE_SCORE);
 
         UpdateScore.updateUserScore(score,this);

@@ -1,10 +1,8 @@
 package com.team.classicrealm.TicTacToe.Online;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -23,6 +21,8 @@ import com.team.classicrealm.GameUtility.Constants;
 import com.team.classicrealm.GameUtility.NetworkUtil;
 import com.team.classicrealm.GameUtility.Warnings;
 import com.team.classicrealm.R;
+import com.team.classicrealm.TicTacToe.Offline.TicTacOfflinePlayerSelec;
+import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,9 +50,16 @@ public class TicTacOnlinePlayerSelec extends AppCompatActivity {
         EditText gameCodeEditText = findViewById(R.id.gameCodeEditText);
         Button joinButton = findViewById(R.id.tttOnlineJoinGameButton);
         Button hostButton = findViewById(R.id.tttOnlineHostGameButton);
+        Button back = findViewById(R.id.tttOnlineRoomBackButton);
         networkUtil=new NetworkUtil(this);
-
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TicTacToeMenu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +74,7 @@ public class TicTacOnlinePlayerSelec extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                GameEvent event=snapshot.getValue(GameEvent.class);
+                                TicTacToeEvent event=snapshot.getValue(TicTacToeEvent.class);
                                 if((event.getPlayerCount()==1)){
                                     joinRoom(roomCode);
                                     Intent intent = new Intent(TicTacOnlinePlayerSelec.this, TicTacOnline.class);

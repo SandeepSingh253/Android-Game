@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blockbreaker_menu_bg"
     tools:context=".BlockBreaker.BlockBreakerMenu">
-
-    <ImageView
-        android:id="@+id/blockBreakerBG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blockbreaker_menu_bg" />
 
     <ImageButton
         android:id="@+id/blockBreakerBackButton"
@@ -23,12 +13,10 @@
         android:layout_height="70dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/blockBreakerBG"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blockBreakerPlayButton"
-        app:layout_constraintVertical_bias="0.47"
         app:srcCompat="@drawable/button_back" />
 
     <ImageButton
@@ -39,21 +27,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/blockBreakerBG"
-        app:layout_constraintVertical_bias="0.791"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.779"
         app:srcCompat="@drawable/button_play" />
 
-    <TextView
-        android:id="@+id/blockBreakerDes"
-        android:layout_width="241dp"
-        android:layout_height="217dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/blockBreakerPlayButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/blockBreakerBG"
-        app:layout_constraintVertical_bias="0.87" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,19 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/tictactoe_waiting_room_bg" />
 
+    <ImageButton
+        android:id="@+id/tttWaitingRoomBackButton"
+        android:layout_width="169dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tttRoomCodeTextView"
+        app:layout_constraintVertical_bias="0.841"
+        app:srcCompat="@drawable/button_back" />
+
     <TextView
         android:id="@+id/tttRoomCodeTextView"
         android:layout_width="294dp"

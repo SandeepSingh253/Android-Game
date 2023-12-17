@@ -70,7 +70,7 @@ public class TicTacOnlineResultDialog extends Dialog {
         getRoomReference(roomCode).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                GameEvent e =snapshot.getValue(GameEvent.class);
+                TicTacToeEvent e =snapshot.getValue(TicTacToeEvent.class);
                 if(e.getRestartGame()){
                     getRoomReference(roomCode).child(Constants.DATABASE_CHILD_RESTART_GAME).setValue(false);
                     game.restartMatch();

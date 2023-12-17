@@ -80,6 +80,7 @@ public class MainMenu extends AppCompatActivity {
     public void playButtonClickEvent(View view){
         Intent i = new Intent(getApplicationContext(), GamesScreen.class);
         startActivity(i);
+        finish();
     }
 
     public void scoreButtonClickEvent(View view){

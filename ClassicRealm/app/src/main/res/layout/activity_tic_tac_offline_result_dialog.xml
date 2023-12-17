@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="243dp"
         android:background="@color/cyan"
         android:orientation="vertical">
 
@@ -33,6 +33,21 @@
             android:layout_margin="20dp"
             android:backgroundTint="@color/white"
             android:text="Start Again"
+            android:textColor="@color/cyan"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp" />
+
+        <Button
+            android:id="@+id/tttGameOverOfflineExitButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@android:color/white"
+            android:text="Exit"
             android:textColor="@color/cyan"
             android:textSize="18sp"
             android:textStyle="bold"

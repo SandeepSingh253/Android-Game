@@ -14,6 +14,7 @@ import com.team.classicrealm.BlockBreaker.BlockBreakerMenu;
 import com.team.classicrealm.MainScreen.MainMenu;
 import com.team.classicrealm.R;
 import com.team.classicrealm.SpaceShooter.SpaceShooterMenu;
+import com.team.classicrealm.Bounce.BounceMenu;
 import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 import java.util.ArrayList;
@@ -47,10 +48,12 @@ public class GamesScreen extends AppCompatActivity implements RecycleViewInterfa
         GameModel spaceShooter=new GameModel( R.drawable.gamesscreen_spaceshooter);
         GameModel ticTacToe=new GameModel( R.drawable.gamesscreen_tictactoe);
         GameModel blockBreaker=new GameModel( R.drawable.gamescreen_blockbreaker);
+        GameModel tennis=new GameModel( R.drawable.gamesscreen_bounce);
 
         Games.add(spaceShooter);
         Games.add(ticTacToe);
         Games.add(blockBreaker);
+        Games.add(tennis);
     }
 
     @Override
@@ -59,12 +62,19 @@ public class GamesScreen extends AppCompatActivity implements RecycleViewInterfa
         switch(pos){
             case 0 : i=new Intent(getApplicationContext(), SpaceShooterMenu.class);
                 startActivity(i);
+                finish();
                 return;
             case 1 : i=new Intent(getApplicationContext(), TicTacToeMenu.class);
                 startActivity(i);
+                finish();
                 return;
             case 2 : i=new Intent(getApplicationContext(), BlockBreakerMenu.class);
                 startActivity(i);
+                finish();
+                return;
+            case 3 : i=new Intent(getApplicationContext(), BounceMenu.class);
+                startActivity(i);
+                finish();
                 return;
             default: return;
         }

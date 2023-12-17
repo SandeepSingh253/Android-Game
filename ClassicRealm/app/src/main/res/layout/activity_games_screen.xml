@@ -8,28 +8,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="416dp"
-        android:layout_height="558dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="390dp"
+        android:layout_height="548dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="178dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="casual"
-        android:gravity="center"
-        android:text="GAMES"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:layout_constraintVertical_bias="0.421" />
 
     <ImageButton
         android:id="@+id/gamesScreenBackButton"
@@ -40,8 +27,19 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv"
         app:srcCompat="@drawable/button_back" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="309dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gamesscreen_games_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

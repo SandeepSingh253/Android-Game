@@ -1,6 +1,11 @@
 package com.team.classicrealm.GameUtility;
 
 public class Constants {
+    //tennis
+    public static final double TENNIS_BALL_INITIAL_POS_PER=50.0;
+    public static final int TENNIS_BALL_Y_VELOCITY=20;
+    public static final int[] RANDOM_VELOCITIES = {-35, 30, -25 , 25, 30, 35};
+
     // Tic Tac
     public static final String ROOM_CODE_ELEMENTS= "abcdefghijklmnopqrstuvwxyz0123456789";
     public static final int ROOM_CODE_SIZE=3;
@@ -25,6 +30,11 @@ public class Constants {
     public static final String DATABASE_CHILD_PLAYER_NUM="playerNum";
     public static final String DATABASE_CHILD_PLAYER_ONE_NAME="playerOneName";
     public static final String DATABASE_CHILD_PLAYER_TWO_NAME="playerTwoName";
+    public static final String DATABASE_CHILD_BALL_X_PER = "enterPosPer";
+    public static final String DATABASE_CHILD_BALL_X_VELOCITY = "xVelocity";
+    public static final String DATABASE_CHILD_BALL_ENTER_SCREEN_PLAYER_NUM = "enterScreenPlayerNum";
+    public static final String DATABASE_CHILD_GAME_END = "gameEnd";
+
 
     // General Constants
     public static final int USER_NAME_MIN_LENGTH=4;
@@ -38,7 +48,7 @@ public class Constants {
     public static final String INTENT_KEY_PLAYER_NUM="playerNum";
     public static final String INTENT_KEY_OPPONENT_NAME="oppName";
     public static final String INTENT_KEY_SCORE="score";
-
+    public static final String INTENT_KEY_PLAYER_WON_NAME = "playerWon";
 
     //Shared Preferences
     public static final String PREF_USER="USER_DATA_PREFERENCES";
@@ -49,10 +59,10 @@ public class Constants {
 
     //scores
     public static final int SCORES_TIC_TAC_TOE = 20;
-    public static final int BLOCK_BREAKER_SCORE = 1;
+    public static final int SCORES_BOUNCE = 20;
+    public static final int BLOCK_BREAKER_SCORE = 10;
 
     //default values
     public static final String DEFAULT_VALUE_USER_NAME="username";
     public static final int DEFAULT_VALUE_SCORE = 0;
-
 }

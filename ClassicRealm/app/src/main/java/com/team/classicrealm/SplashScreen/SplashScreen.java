@@ -23,7 +23,6 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         hideSystemUI();
-
         ImageView icon= (ImageView)findViewById(R.id.icon);
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
         icon.startAnimation(myFadeInAnimation);

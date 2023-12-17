@@ -96,20 +96,6 @@ public class space_shooter_game_view extends View {
         }
     }
 
-    private int getNavigationBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            DisplayMetrics metrics = new DisplayMetrics();
-            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int usableHeight = metrics.heightPixels;
-            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-            int realHeight = metrics.heightPixels;
-            if (realHeight > usableHeight)
-                return realHeight - usableHeight;
-            else
-                return 0;
-        }
-        return 0;
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -120,6 +106,7 @@ public class space_shooter_game_view extends View {
         drawHP(canvas);
         drawScore(canvas);
         checkGameOverStatus();
+        handler.postDelayed(runnable, Constants.ONE_SEC/Constants.GAME_FPS);
     }
 
     private void drawScore(Canvas canvas) {
@@ -140,8 +127,8 @@ public class space_shooter_game_view extends View {
         for(int i =1;i<=hp;i++){
             Bitmap heart = BitmapFactory.decodeResource(getResources(), R.drawable.spaceshooter_hp);
             int left=displaySize.x-(i*heart.getWidth())-heartPadding;
-            backgroundRect = new Rect(left, 0,left+heart.getWidth()+heartOverlap,heart.getHeight());
-            canvas.drawBitmap(heart,null,backgroundRect,null);
+            Rect heartRect = new Rect(left, 0,left+heart.getWidth()+heartOverlap,heart.getHeight());
+            canvas.drawBitmap(heart,null,heartRect,null);
         }
     }
 
@@ -185,7 +172,6 @@ public class space_shooter_game_view extends View {
                 ufo.reSpawn(canvas.getWidth());
             }
         }
-        handler.postDelayed(runnable, Constants.ONE_SEC/Constants.GAME_FPS);
     }
 
     private void setBackground(Canvas canvas){
@@ -203,14 +189,26 @@ public class space_shooter_game_view extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int)event.getX();
         int y = (int)event.getY();
-
         //Log.d("",""+shooter.getHitBox().includePoint(x, y));
-
         if(event.getAction()==MotionEvent.ACTION_MOVE && x>shooter.getWidth()/2 && x<displaySize.x-shooter.getWidth()/2 && shooter.getHitBox().includePoint(x, y)){
             shooter.setLoc(x-shooter.getWidth()/2,shooter.getLoc().y);
         }
-
-
         return true;
+    }
+
+
+    private int getNavigationBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
     }
 }

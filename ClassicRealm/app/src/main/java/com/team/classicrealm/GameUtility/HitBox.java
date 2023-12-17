@@ -4,7 +4,6 @@ import android.graphics.Point;
 
 public class HitBox {
     private Point upperLeftCorner,lowerRightCorner;
-
     public HitBox(Point upLeft,Point lowRight){
         this.upperLeftCorner=upLeft;
         this.lowerRightCorner=lowRight;

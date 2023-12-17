@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.team.classicrealm.R;
+import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 public class TicTacOfflineResultDialog extends Dialog {
     private final String winner;
@@ -25,7 +27,16 @@ public class TicTacOfflineResultDialog extends Dialog {
         setContentView(R.layout.activity_tic_tac_offline_result_dialog);
         TextView messageText = findViewById(R.id.messageText);
         Button startAgainButton = findViewById(R.id.startAgainButton);
+        Button tttGameOverOfflineExitButton = findViewById(R.id.tttGameOverOfflineExitButton);
         messageText.setText(winner);
+        tttGameOverOfflineExitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                game.finish();
+                game.startActivity(new Intent(game, TicTacToeMenu.class));
+                dismiss();
+            }
+        });
         startAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

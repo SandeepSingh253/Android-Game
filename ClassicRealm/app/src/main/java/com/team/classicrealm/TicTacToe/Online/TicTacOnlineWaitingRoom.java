@@ -3,9 +3,9 @@ package com.team.classicrealm.TicTacToe.Online;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
+import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 public class TicTacOnlineWaitingRoom extends AppCompatActivity {
 
@@ -43,6 +45,16 @@ public class TicTacOnlineWaitingRoom extends AppCompatActivity {
         Intent i= getIntent();
         roomCode=i.getStringExtra(Constants.INTENT_KEY_ROOM_CODE_STRING);
 
+        ImageButton back=findViewById(R.id.tttWaitingRoomBackButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(), TicTacToeMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
         TextView tttRoomCodeTextView= findViewById(R.id.tttRoomCodeTextView);
         tttRoomCodeTextView.setText(roomCode);
         roomRef=getRoomReference(roomCode);
@@ -51,12 +63,11 @@ public class TicTacOnlineWaitingRoom extends AppCompatActivity {
         eventListener=roomRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                GameEvent event = snapshot.getValue(GameEvent.class);
+                TicTacToeEvent event = snapshot.getValue(TicTacToeEvent.class);
                 if (event.getPlayerCount() == 2 && !event.getIsAMove()) {
                     joined=true;
                     Intent i = new Intent(getApplicationContext(), TicTacOnline.class);
                     i.putExtra(Constants.INTENT_KEY_PLAYER_NUM, Constants.PLAYER_NUM_1);
-                    Log.d("123",event.getPlayerTwoName());
                     i.putExtra(Constants.INTENT_KEY_OPPONENT_NAME,event.getPlayerTwoName());
                     i.putExtra(Constants.INTENT_KEY_ROOM_CODE_STRING, roomCode);
                     roomRef.removeEventListener(eventListener);

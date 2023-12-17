@@ -75,7 +75,7 @@ public class TicTacOnline extends AppCompatActivity {
 
         roomCode=i.getStringExtra(Constants.INTENT_KEY_ROOM_CODE_STRING);
 
-        thisPlayer=i.getIntExtra(Constants.INTENT_KEY_PLAYER_NUM,1);
+        thisPlayer=i.getIntExtra(Constants.INTENT_KEY_PLAYER_NUM,Constants.PLAYER_NUM_1);
         changePlayerTurnTo(PLAYER_NUM_1);
 
         if(thisPlayer==Constants.PLAYER_NUM_1){
@@ -94,7 +94,7 @@ public class TicTacOnline extends AppCompatActivity {
         eventListener=getRoomReference(roomCode).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                GameEvent e = snapshot.getValue(GameEvent.class);
+                TicTacToeEvent e = snapshot.getValue(TicTacToeEvent.class);
 
                 if (!e.isPlayerDisconnect()) {
                     if (e.getIsAMove()) {
@@ -310,7 +310,6 @@ public class TicTacOnline extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("","onstop callled");
         getRoomReference(roomCode).removeEventListener(eventListener);
         if(!finishedSelf)getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).setValue(true);
         getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).onDisconnect().cancel();

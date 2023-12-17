@@ -1,6 +1,6 @@
 package com.team.classicrealm.TicTacToe.Online;
 
-public class GameEvent {
+public class TicTacToeEvent {
     private int playerCount;
 
     private boolean playerDisconnect;
@@ -17,10 +17,10 @@ public class GameEvent {
     private String playerTwoName;
 
 
-    public GameEvent() {
+    public TicTacToeEvent() {
     }
 
-    public GameEvent(int playerCount, boolean playerDisconnect, int playerNum, boolean isAMove, int moveMade, boolean restartGame,String playerOneName,String playerTwoName) {
+    public TicTacToeEvent(int playerCount, boolean playerDisconnect, int playerNum, boolean isAMove, int moveMade, boolean restartGame, String playerOneName, String playerTwoName) {
         this.playerCount = playerCount;
         this.playerDisconnect = playerDisconnect;
         this.playerNum = playerNum;

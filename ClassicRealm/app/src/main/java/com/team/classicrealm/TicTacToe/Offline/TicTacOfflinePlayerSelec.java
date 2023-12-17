@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.team.classicrealm.GameUtility.Constants;
 import com.team.classicrealm.GameUtility.Warnings;
 import com.team.classicrealm.R;
+import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 public class TicTacOfflinePlayerSelec extends AppCompatActivity {
     @Override
@@ -26,7 +27,16 @@ public class TicTacOfflinePlayerSelec extends AppCompatActivity {
         EditText playerOne = findViewById(R.id.playerOne);
         EditText playerTwo = findViewById(R.id.playerTwo);
         Button startGameButton = findViewById(R.id.ticTacOfflineStartGameButton);
+        Button ticTacOfflinePlayerSlecBackB = findViewById(R.id.ticTacOfflinePlayerSlecBackB);
 
+        ticTacOfflinePlayerSlecBackB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TicTacOfflinePlayerSelec.this, TicTacToeMenu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,6 +49,7 @@ public class TicTacOfflinePlayerSelec extends AppCompatActivity {
                     intent.putExtra(Constants.INTENT_KEY_ROOM_PLAYER_ONE, getPlayerOneName);
                     intent.putExtra(Constants.INTENT_KEY_ROOM_PLAYER_TWO, getPlayerTwoName);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

@@ -12,7 +12,19 @@
         android:theme="@style/Theme.ClassicRealm"
         tools:targetApi="31">
         <activity
-            android:name=".Tennis.TennisMenu"
+            android:name=".Bounce.Online.BounceWaitingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".Bounce.Online.BounceGameOver"
+            android:exported="false" />
+        <activity
+            android:name=".Bounce.Online.BounceRoom"
+            android:exported="false" />
+        <activity
+            android:name=".Bounce.BounceMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Bounce.Online.BounceGame"
             android:exported="false" />
         <activity
             android:name=".BlockBreaker.BlockBreakerMenu"

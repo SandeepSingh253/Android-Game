@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/tictactoe_pagebkg"
+    android:background="@drawable/tictactoe_page_player_selec_bkg"
     tools:context=".TicTacToe.Online.TicTacOnlinePlayerSelec">
 
     <androidx.cardview.widget.CardView
@@ -60,6 +60,15 @@
                 android:layout_marginTop="40dp"
                 android:backgroundTint="@color/cyan"
                 android:text="Host Game"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/tttOnlineRoomBackButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/cyan"
+                android:text="Back"
                 android:textSize="18sp" />
 
         </LinearLayout>

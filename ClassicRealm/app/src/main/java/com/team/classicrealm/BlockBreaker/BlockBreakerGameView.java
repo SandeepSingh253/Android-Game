@@ -9,7 +9,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -92,7 +95,7 @@ public class BlockBreakerGameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
+        drawBackground(canvas);
         ballX += blockBreakerVelocity.getX();
         ballY += blockBreakerVelocity.getY();
         if ((ballX >= dWidth - ball.getWidth()) || ballX <= 0) {
@@ -151,7 +154,26 @@ public class BlockBreakerGameView extends View {
         }
     }
 
-
+    private void drawBackground(Canvas canvas) {
+        Bitmap background;
+        background = BitmapFactory.decodeResource(getResources(), R.drawable.block_breaker_game_bg);
+        Rect backgroundRect = new Rect(0, 0, dWidth,dHeight+getNavigationBarHeight());
+        canvas.drawBitmap(background,null,backgroundRect,null);
+    }
+    private int getNavigationBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
@@ -186,8 +208,7 @@ public class BlockBreakerGameView extends View {
     }
 
     private int xVelocity() {
-        int[] values = {-35, 30, -25 , 25, 30, 35};
-        int index = random.nextInt(6);
-        return values[index];
+        int index = random.nextInt(Constants.RANDOM_VELOCITIES.length);
+        return Constants.RANDOM_VELOCITIES[index];
     }
 }
