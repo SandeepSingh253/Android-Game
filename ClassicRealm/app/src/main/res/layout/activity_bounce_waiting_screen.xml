@@ -23,4 +23,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.593" />
 
+    <ImageButton
+        android:id="@+id/BlounceWaitingRoomBackButton"
+        android:layout_width="160dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="152dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tennisRoomCodeTV"
+        app:layout_constraintVertical_bias="0.288"
+        app:srcCompat="@drawable/button_back" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
-import com.team.classicrealm.GameUtility.Warnings;
+import com.team.classicrealm.GameUtility.Prompts;
 import com.team.classicrealm.MainScreen.MainMenu;
 import com.team.classicrealm.R;
 
@@ -78,7 +78,7 @@ public class UserNameSetup extends AppCompatActivity {
                                 startActivity(i);
                                 finish();
                             }else{
-                                Toast.makeText(UserNameSetup.this, Warnings.USERNAME_IN_USE, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserNameSetup.this, Prompts.USERNAME_IN_USE, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -88,7 +88,7 @@ public class UserNameSetup extends AppCompatActivity {
                         }
                     });
                 }else {
-                    Toast.makeText(UserNameSetup.this, Warnings.USERNAME_INVALID_LENGTH, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserNameSetup.this, Prompts.USERNAME_INVALID_LENGTH, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.Bounce.Online.BounceRoom;
@@ -25,6 +26,8 @@ public class BounceMenu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_play_pressed));
                 startActivity(new Intent(getApplicationContext(), BounceRoom.class));
                 finish();
             }
@@ -32,6 +35,8 @@ public class BounceMenu extends AppCompatActivity {
         bounceMenuBackb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 startActivity(new Intent(getApplicationContext(), GamesScreen.class));
                 finish();
             }

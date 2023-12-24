@@ -24,8 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.Bounce.BounceMenu;
 import com.team.classicrealm.GameUtility.Constants;
-import com.team.classicrealm.GameUtility.Warnings;
-import com.team.classicrealm.MainScreen.MainMenu;
+import com.team.classicrealm.GameUtility.MusicManager;
+import com.team.classicrealm.GameUtility.Prompts;
 import com.team.classicrealm.R;
 
 import java.util.HashMap;
@@ -92,7 +92,7 @@ public class BounceGameView extends View {
         displaySize.set(width,height);
         handler=new Handler();
         myBounceRacket =new BounceRacket(context);
-        myBounceRacket.setLoc(displaySize.x/2 - myBounceRacket.getWidth()/2, displaySize.y- 2* myBounceRacket.getHeight());
+        myBounceRacket.setLoc(displaySize.x/2 - myBounceRacket.getWidth()/2, displaySize.y- 5* myBounceRacket.getHeight());
         setEventListeners();
         ball=new BounceBall(BitmapFactory.decodeResource(getResources(), R.drawable.block_breaker_ball));
         if(thisPlayerNum==Constants.PLAYER_NUM_1){
@@ -117,7 +117,7 @@ public class BounceGameView extends View {
                             if (snapshot.getValue() == null)
                                 return;
                             if (event.getEnterScreenPlayerNum() == thisPlayerNum) {
-                                ball.setxVelocity(event.getxVelocity());
+                                ball.setxVelocity(-1*event.getxVelocity());
                                 int x = displaySize.x - (int) (displaySize.x * event.getEnterPosPer() / 100.0);
                                 ball.setPos(x, 0);
                                 ballOnScreen = true;
@@ -141,7 +141,7 @@ public class BounceGameView extends View {
                     }
                 }else{
                     finishedSelf=true;
-                    Toast.makeText(context, Warnings.PLAYER_DC, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, Prompts.PLAYER_DC, Toast.LENGTH_SHORT).show();
                     getRoomRef(roomCode).removeEventListener(eventListener);
                     getRoomRef(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).onDisconnect().cancel();
                     getRoomRef(roomCode).removeValue();
@@ -218,9 +218,11 @@ public class BounceGameView extends View {
             int x = ball.getPos().x;
             int y = ball.getPos().y;
             if (x < 0 || x + ball.getWidth() > displaySize.x) {
+                MusicManager.getInstance().play(context,R.raw.ball_bounce);
                 ball.setxVelocity(-1 * ball.getxVelocity());
             }
             if (ball.getHitBox().checkCollision(myBounceRacket.getHitBox())) {
+                MusicManager.getInstance().play(context,R.raw.ball_bounce);
                 ball.setyVelocity(-1 * Math.abs(ball.getyVelocity()));
             }
         }
@@ -247,7 +249,7 @@ public class BounceGameView extends View {
         int x = (int)ev.getX();
         int y = (int)ev.getY();
         //Log.d("",""+shooter.getHitBox().includePoint(x, y));
-        if(ev.getAction()==MotionEvent.ACTION_MOVE && x> myBounceRacket.getWidth()/2 && x<displaySize.x- myBounceRacket.getWidth()/2 && myBounceRacket.getHitBox().includePoint(x, y)){
+        if(ev.getAction()==MotionEvent.ACTION_MOVE && x> myBounceRacket.getWidth()/2 && x<displaySize.x- myBounceRacket.getWidth()/2 && myBounceRacket.getLoc().y<y){
             myBounceRacket.setLoc(x- myBounceRacket.getWidth()/2, myBounceRacket.getLoc().y);
         }
         return true;

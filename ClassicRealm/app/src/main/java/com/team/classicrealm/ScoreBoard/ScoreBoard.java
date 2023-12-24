@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.MainScreen.MainMenu;
 import com.team.classicrealm.R;
 
@@ -57,10 +58,12 @@ public class ScoreBoard extends AppCompatActivity {
         scoreboardBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 Intent i=new Intent(getApplicationContext(), MainMenu.class);
                 i.putExtra(Constants.INTENT_KEY_USER_NAME,userName);
                 startActivity(i);
+                finish();
             }
         });
 

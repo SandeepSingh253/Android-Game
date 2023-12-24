@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="390dp"
-        android:layout_height="548dp"
+        android:layout_width="369dp"
+        android:layout_height="591dp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,8 +20,8 @@
 
     <ImageButton
         android:id="@+id/gamesScreenBackButton"
-        android:layout_width="181dp"
-        android:layout_height="70dp"
+        android:layout_width="159dp"
+        android:layout_height="63dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
@@ -36,7 +36,7 @@
         android:id="@+id/imageView12"
         android:layout_width="309dp"
         android:layout_height="104dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

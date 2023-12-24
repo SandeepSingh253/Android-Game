@@ -27,7 +27,7 @@
         android:id="@+id/setUserNameButton"
         android:layout_width="148dp"
         android:layout_height="58dp"
-        android:backgroundTint="#FE3131"
+        android:backgroundTint="#FF0000"
         android:text="Done"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -7,18 +7,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.TicTacToe.Offline.TicTacOfflinePlayerSelec;
-import com.team.classicrealm.TicTacToe.Online.TicTacOnlinePlayerSelec;
+import com.team.classicrealm.TicTacToe.Online.TicTacOnlineRoom;
 
 public class TicTacToeMenu extends AppCompatActivity {
 
-    ImageButton tttOfflineStartButton, tttOnlineStartButton,tttOnlineBackButton;
+    ImageButton offlineStart, onlineStartButton,backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,40 +26,37 @@ public class TicTacToeMenu extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         hideSystemUI();
-        tttOfflineStartButton=findViewById(R.id.tttOfflineStartButton);
-        tttOnlineStartButton=findViewById(R.id.tttOnlineStartButton);
-        tttOnlineBackButton=findViewById(R.id.tttOnlineBackButton);
+        offlineStart=findViewById(R.id.tttOfflineStartButton);
+        onlineStartButton=findViewById(R.id.tttOnlineStartButton);
+        backButton=findViewById(R.id.tttOnlineBackButton);
 
-        tttOfflineStartButton.setOnClickListener(new View.OnClickListener() {
+        offlineStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_offline_pressed));
                 Intent i= new Intent(getApplicationContext(), TicTacOfflinePlayerSelec.class);
                 startActivity(i);
                 finish();
             }
         });
 
-        tttOnlineStartButton.setOnClickListener(new View.OnClickListener() {
+        onlineStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(), TicTacOfflinePlayerSelec.class);
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_online_pressed));
+                Intent i= new Intent(getApplicationContext(), TicTacOnlineRoom.class);
                 startActivity(i);
                 finish();
             }
         });
 
-        tttOnlineStartButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(), TicTacOnlinePlayerSelec.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        tttOnlineBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 Intent i= new Intent(getApplicationContext(), GamesScreen.class);
                 startActivity(i);
                 finish();

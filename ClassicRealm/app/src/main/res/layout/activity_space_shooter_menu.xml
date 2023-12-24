@@ -9,30 +9,29 @@
 
     <ImageButton
         android:id="@+id/spaceShooterBackButton"
-        android:layout_width="176dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="154dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticTacOfflineStartGameButton"
-        app:layout_constraintVertical_bias="0.278"
         app:srcCompat="@drawable/button_back" />
 
     <ImageButton
         android:id="@+id/ticTacOfflineStartGameButton"
-        android:layout_width="182dp"
-        android:layout_height="67dp"
+        android:layout_width="151dp"
+        android:layout_height="64dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772"
+        app:layout_constraintVertical_bias="0.891"
         app:srcCompat="@drawable/button_play" />
 </androidx.constraintlayout.widget.ConstraintLayout>

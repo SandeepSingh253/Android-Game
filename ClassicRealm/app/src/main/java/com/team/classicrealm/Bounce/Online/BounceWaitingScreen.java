@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
+import com.team.classicrealm.MainScreen.MainMenu;
 import com.team.classicrealm.R;
 import com.team.classicrealm.TicTacToe.Online.TicTacToeEvent;
 
@@ -46,6 +50,17 @@ public class BounceWaitingScreen extends AppCompatActivity {
         tennisRoomCodeTV.setText(roomCode);
         roomRef=getRoomReference(roomCode);
 
+        ImageButton backButton=findViewById(R.id.BlounceWaitingRoomBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
+                Intent i=new Intent(getApplicationContext(), BounceRoom.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         eventListener=roomRef.addValueEventListener(new ValueEventListener() {
             @Override

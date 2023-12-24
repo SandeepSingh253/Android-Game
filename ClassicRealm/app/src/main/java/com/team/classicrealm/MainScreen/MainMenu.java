@@ -79,6 +79,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void playButtonClickEvent(View view){
+        MusicManager.getInstance().play(this,R.raw.button_sound);
         ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_play_pressed));
         Intent i = new Intent(getApplicationContext(), GamesScreen.class);
         startActivity(i);
@@ -86,15 +87,12 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void scoreButtonClickEvent(View view){
-        playButtonSound();
+        MusicManager.getInstance().play(this,R.raw.button_sound);
+        ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_score_pressed));
         Intent i = new Intent(getApplicationContext(), ScoreBoard.class);
         i.putExtra(Constants.INTENT_KEY_USER_NAME,userName);
-        finish();
         startActivity(i);
-    }
-
-    private void playButtonSound() {
-        MusicManager.getInstance().play(this,R.raw.button_sound);
+        finish();
     }
 
     public void playPauseMusic(View view){

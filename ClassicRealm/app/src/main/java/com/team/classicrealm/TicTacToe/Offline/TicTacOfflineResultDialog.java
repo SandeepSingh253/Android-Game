@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.TicTacToe.TicTacToeMenu;
@@ -33,14 +34,16 @@ public class TicTacOfflineResultDialog extends Dialog {
         tttGameOverOfflineExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                game.finish();
+                MusicManager.getInstance().play(game,R.raw.button_sound);
                 game.startActivity(new Intent(game, GamesScreen.class));
+                game.finish();
                 dismiss();
             }
         });
         startAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(game,R.raw.button_sound);
                 game.restartMatch();
                 dismiss();
             }

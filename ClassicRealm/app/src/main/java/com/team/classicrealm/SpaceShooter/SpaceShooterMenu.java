@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 
@@ -26,14 +27,18 @@ public class SpaceShooterMenu extends AppCompatActivity {
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_play_pressed));
                 Intent i= new Intent(getApplicationContext(),SpaceShooterActivity.class);
-                finish();
                 startActivity(i);
+                finish();
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 Intent i= new Intent(getApplicationContext(), GamesScreen.class);
                 startActivity(i);
                 finish();

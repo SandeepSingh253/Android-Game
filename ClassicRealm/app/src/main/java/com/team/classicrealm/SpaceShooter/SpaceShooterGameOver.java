@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.MainScreen.MainMenu;
 import com.team.classicrealm.R;
@@ -25,16 +27,18 @@ public class SpaceShooterGameOver extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         hideSystemUI();
-
+        MusicManager.getInstance().play(getApplicationContext(),R.raw.gameover_sound);
         ImageButton restart = findViewById(R.id.restartSpaceShooter);
         ImageButton back=findViewById(R.id.ssBackToMenu);
         int score=getIntent().getIntExtra(Constants.INTENT_KEY_SCORE,Constants.DEFAULT_VALUE_SCORE);
-
+        ((TextView)findViewById(R.id.ssGOscore)).setText("SCORE: "+score);
         UpdateScore.updateUserScore(score,this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 Intent i=new Intent(getApplicationContext(), GamesScreen.class);
                 startActivity(i);
                 finish();
@@ -44,6 +48,8 @@ public class SpaceShooterGameOver extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_restart_pressed));
                 Intent i=new Intent(getApplicationContext(), SpaceShooterActivity.class);
                 startActivity(i);
                 finish();

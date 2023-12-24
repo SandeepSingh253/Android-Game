@@ -18,9 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
-import com.team.classicrealm.GamesScreen.GamesScreen;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.R;
-import com.team.classicrealm.TicTacToe.TicTacToeMenu;
 
 public class TicTacOnlineWaitingRoom extends AppCompatActivity {
 
@@ -49,7 +48,8 @@ public class TicTacOnlineWaitingRoom extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(), TicTacToeMenu.class);
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                Intent i= new Intent(getApplicationContext(), TicTacOnlineRoom.class);
                 startActivity(i);
                 finish();
             }

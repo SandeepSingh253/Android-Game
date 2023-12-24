@@ -17,9 +17,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.UpdateScore;
+
+import java.util.EventListener;
 
 public class TicTacOnlineResultDialog extends Dialog {
     private  String winner;
@@ -47,28 +50,8 @@ public class TicTacOnlineResultDialog extends Dialog {
         if(thisPlayerWon){
             UpdateScore.updateUserScore(Constants.SCORES_TIC_TAC_TOE,context);
         }
-        startAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getRoomReference(roomCode).child(Constants.DATABASE_CHILD_RESTART_GAME).setValue(true);
-                game.restartMatch();
-                dismiss();
-            }
-        });
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).setValue(true);
-                Intent i=new Intent(game.getApplicationContext(), GamesScreen.class);
-                game.startActivity(i);
-                dismiss();
-                game.finish();
-            }
-        });
-
-
-        getRoomReference(roomCode).addValueEventListener(new ValueEventListener() {
+        ValueEventListener listener=getRoomReference(roomCode).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 TicTacToeEvent e =snapshot.getValue(TicTacToeEvent.class);
@@ -84,6 +67,33 @@ public class TicTacOnlineResultDialog extends Dialog {
                 Toast.makeText(game, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        startAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MusicManager.getInstance().play(context,R.raw.button_sound);
+                getRoomReference(roomCode).child(Constants.DATABASE_CHILD_RESTART_GAME).setValue(true);
+                game.restartMatch();
+                dismiss();
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MusicManager.getInstance().play(context,R.raw.button_sound);
+                getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).setValue(true);
+                getRoomReference(roomCode).removeEventListener(listener);
+                getRoomReference(roomCode).removeEventListener(((TicTacOnline)context).eventListener);
+                Intent i=new Intent(game.getApplicationContext(), GamesScreen.class);
+                game.startActivity(i);
+                dismiss();
+                game.finish();
+            }
+        });
+
+
+
     }
 
     public DatabaseReference getRoomReference(String roomCode){

@@ -60,7 +60,7 @@
             android:name=".MainScreen.MainMenu"
             android:exported="false" />
         <activity
-            android:name=".TicTacToe.Online.TicTacOnlinePlayerSelec"
+            android:name=".TicTacToe.Online.TicTacOnlineRoom"
             android:exported="false" />
         <activity
             android:name=".TicTacToe.Online.TicTacOnline"

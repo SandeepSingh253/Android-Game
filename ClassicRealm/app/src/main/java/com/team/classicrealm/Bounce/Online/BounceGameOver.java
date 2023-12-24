@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.team.classicrealm.Bounce.BounceMenu;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GamesScreen.GamesScreen;
 import com.team.classicrealm.R;
 import com.team.classicrealm.ScoreBoard.UpdateScore;
@@ -28,6 +29,7 @@ public class BounceGameOver extends AppCompatActivity {
         ImageButton bounceGameoverBackB=findViewById(R.id.bounceGameoverBackB);
         TextView winnerText=findViewById(R.id.bouncePlayerWonText);
         hideSystemUI();
+        MusicManager.getInstance().play(getApplicationContext(),R.raw.gameover_sound);
         Intent i=getIntent();
         String winner=i.getStringExtra(Constants.INTENT_KEY_PLAYER_WON_NAME);
         winnerText.setText(winner+" Won!!");
@@ -38,14 +40,18 @@ public class BounceGameOver extends AppCompatActivity {
         bounceGameoverRestartB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_restart_pressed));
                 Intent i=new Intent(getApplicationContext(), BounceRoom.class);
-                finish();
                 startActivity(i);
+                finish();
             }
         });
         bounceGameoverBackB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
+                ((ImageButton)view).setImageDrawable(getDrawable(R.drawable.button_back_pressed));
                 Intent i=new Intent(getApplicationContext(), GamesScreen.class);
                 finish();
                 startActivity(i);

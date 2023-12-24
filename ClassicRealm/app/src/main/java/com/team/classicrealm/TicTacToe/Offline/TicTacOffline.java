@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.R;
 import com.team.classicrealm.databinding.ActivityTicTacOfflineBinding;
 
@@ -117,6 +118,7 @@ public class TicTacOffline extends AppCompatActivity {
     private void performAction(ImageView  imageView, int selectedBoxPosition) {
         boxPositions[selectedBoxPosition] = playerTurn;
         if (playerTurn == 1) {
+            MusicManager.getInstance().play(getApplicationContext(),R.raw.ttt_o_tone);
             imageView.setImageResource(R.drawable.tictactoe_ximage);
             if (checkResults()) {
                 TicTacOfflineResultDialog TicTacOfflineResultDialog = new TicTacOfflineResultDialog(TicTacOffline.this, binding.playerOneName.getText().toString() + " is a Winner!", TicTacOffline.this);
@@ -131,6 +133,7 @@ public class TicTacOffline extends AppCompatActivity {
                 totalSelectedBoxes++;
             }
         } else {
+            MusicManager.getInstance().play(getApplicationContext(),R.raw.ttt_x_tone);
             imageView.setImageResource(R.drawable.tictactoe_oimage);
             if (checkResults()) {
                 TicTacOfflineResultDialog TicTacOfflineResultDialog = new TicTacOfflineResultDialog(TicTacOffline.this, binding.playerTwoName.getText().toString()

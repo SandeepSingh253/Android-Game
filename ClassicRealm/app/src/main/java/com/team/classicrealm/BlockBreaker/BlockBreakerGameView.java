@@ -18,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.R;
 
 import java.util.Random;
@@ -28,7 +29,7 @@ public class BlockBreakerGameView extends View {
     float ballX, ballY;
     BlockBreakerVelocity blockBreakerVelocity = new BlockBreakerVelocity(25,32);
     Handler handler;
-    final long UPDATE_MILLIS = 50;
+    final long UPDATE_MILLIS = 20;
     Runnable runnable;
     Paint textPaint = new Paint();
     Paint healthPaint = new Paint();
@@ -99,9 +100,11 @@ public class BlockBreakerGameView extends View {
         ballX += blockBreakerVelocity.getX();
         ballY += blockBreakerVelocity.getY();
         if ((ballX >= dWidth - ball.getWidth()) || ballX <= 0) {
+            MusicManager.getInstance().play(context,R.raw.ball_bounce);
             blockBreakerVelocity.setX(blockBreakerVelocity.getX() * -1);
         }
         if (ballY <= 0) {
+            MusicManager.getInstance().play(context,R.raw.ball_bounce);
             blockBreakerVelocity.setY(blockBreakerVelocity.getY() * -1);
         }
         if (ballY > paddleY + paddle.getHeight()) {
@@ -116,6 +119,7 @@ public class BlockBreakerGameView extends View {
             }
         }
         if (((ballX + ball.getWidth()) >= paddleX) && (ballX <= paddleX + paddle.getWidth() && (ballY + ball.getHeight() >= paddleY)  && (ballY + ball.getHeight() <= paddleY + paddle.getHeight()))) {
+            MusicManager.getInstance().play(context,R.raw.ball_bounce);
             blockBreakerVelocity.setX(blockBreakerVelocity.getX() + 1);
             blockBreakerVelocity.setY((blockBreakerVelocity.getY() + 1) * -1);
         }

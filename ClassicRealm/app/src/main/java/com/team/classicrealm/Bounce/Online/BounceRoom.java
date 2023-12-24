@@ -19,8 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.Bounce.BounceMenu;
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.GameUtility.NetworkUtil;
-import com.team.classicrealm.GameUtility.Warnings;
+import com.team.classicrealm.GameUtility.Prompts;
 import com.team.classicrealm.R;
 import com.team.classicrealm.TicTacToe.Online.TicTacToeEvent;
 
@@ -49,11 +50,13 @@ public class BounceRoom extends AppCompatActivity {
     }
 
     private void backButtonClickListener() {
+        MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
         bounceRoomBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
                 startActivity(new Intent(getApplicationContext(), BounceMenu.class));
+                finish();
             }
         });
     }
@@ -63,8 +66,9 @@ public class BounceRoom extends AppCompatActivity {
         hostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
                 if(!networkUtil.isOnline()){
-                    Toast.makeText(BounceRoom.this, Warnings.NO_INTERNET, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BounceRoom.this, Prompts.NO_INTERNET, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String roomCode;
@@ -76,7 +80,7 @@ public class BounceRoom extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         if(snapshot.exists()){
-                            Toast.makeText(getApplicationContext(), Warnings.RETRY, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), Prompts.RETRY, Toast.LENGTH_SHORT).show();
                         }else{
                             createGameStruct(roomCode);
                             Intent intent = new Intent(BounceRoom.this, BounceWaitingScreen.class);
@@ -103,11 +107,12 @@ public class BounceRoom extends AppCompatActivity {
     }
 
     private void joinEvent() {
+        MusicManager.getInstance().play(getApplicationContext(),R.raw.button_sound);
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!networkUtil.isOnline()){
-                    Toast.makeText(BounceRoom.this, Warnings.NO_INTERNET, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BounceRoom.this, Prompts.NO_INTERNET, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String roomCode=gameCodeEditText.getText().toString();
@@ -125,7 +130,7 @@ public class BounceRoom extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }else{
-                                Toast.makeText(BounceRoom.this, Warnings.ENTER_VALID_CODE, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(BounceRoom.this, Prompts.ENTER_VALID_CODE, Toast.LENGTH_SHORT).show();
                             }
                         }
                         @Override
@@ -135,7 +140,7 @@ public class BounceRoom extends AppCompatActivity {
 
                     });
                 }else {
-                    Toast.makeText(BounceRoom.this, Warnings.ENTER_VALID_CODE, Toast.LENGTH_LONG).show();
+                    Toast.makeText(BounceRoom.this, Prompts.ENTER_VALID_CODE, Toast.LENGTH_LONG).show();
                 }
             }
         });

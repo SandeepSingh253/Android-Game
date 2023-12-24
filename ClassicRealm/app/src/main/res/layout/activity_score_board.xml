@@ -9,7 +9,7 @@
 
     <ImageButton
         android:id="@+id/scoreboardBackButton"
-        android:layout_width="181dp"
+        android:layout_width="144dp"
         android:layout_height="63dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#00FFFFFF"
@@ -22,8 +22,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scoreBoardRecyclerView"
-        android:layout_width="372dp"
-        android:layout_height="412dp"
+        android:layout_width="365dp"
+        android:layout_height="484dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"

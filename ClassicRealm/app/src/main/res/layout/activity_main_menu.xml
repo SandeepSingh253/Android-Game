@@ -54,25 +54,25 @@
 
     <ImageButton
         android:id="@+id/playButton"
-        android:layout_width="156dp"
-        android:layout_height="69dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginTop="49dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#00FFFFFF"
         android:onClick="playButtonClickEvent"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scoreButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/button_play" />
 
     <ImageButton
         android:id="@+id/scoreButton"
-        android:layout_width="163dp"
-        android:layout_height="61dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:layout_marginTop="149dp"
         android:layout_marginBottom="104dp"
         android:backgroundTint="#00FFFFFF"
@@ -80,9 +80,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.783"
         app:srcCompat="@drawable/button_score" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

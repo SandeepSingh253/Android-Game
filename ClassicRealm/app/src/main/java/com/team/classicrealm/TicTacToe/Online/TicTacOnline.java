@@ -3,7 +3,6 @@ package com.team.classicrealm.TicTacToe.Online;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -18,7 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team.classicrealm.GameUtility.Constants;
-import com.team.classicrealm.GameUtility.Warnings;
+import com.team.classicrealm.GameUtility.MusicManager;
+import com.team.classicrealm.GameUtility.Prompts;
 import com.team.classicrealm.R;
 import com.team.classicrealm.databinding.ActivityTicTacOnlineBinding;
 
@@ -44,7 +44,7 @@ public class TicTacOnline extends AppCompatActivity {
 
     private boolean thisPlayerWon=false;
 
-    ValueEventListener eventListener;
+    public ValueEventListener eventListener;
     private FirebaseDatabase database=FirebaseDatabase.getInstance();
     private String userName;
     private String playerOneName;
@@ -99,6 +99,7 @@ public class TicTacOnline extends AppCompatActivity {
                 if (!e.isPlayerDisconnect()) {
                     if (e.getIsAMove()) {
                         if (e.getPlayerNum() == playerTurn && e.getPlayerNum()!=thisPlayer) {
+                            MusicManager.getInstance().play(getApplicationContext(),R.raw.ttt_x_tone);
                             getRoomReference(roomCode).child(Constants.DATABASE_CHILD_IS_A_MOVE).setValue(false);
                             int move = e.getMoveMade();
                             boxPositions[move] = playerTurn;
@@ -129,11 +130,13 @@ public class TicTacOnline extends AppCompatActivity {
                         }
                     }
                 }else{
-                    Toast.makeText(TicTacOnline.this, Warnings.PLAYER_DC, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TicTacOnline.this, Prompts.PLAYER_DC, Toast.LENGTH_SHORT).show();
                     getRoomReference(roomCode).removeEventListener(eventListener);
                     getRoomReference(roomCode).child(Constants.DATABASE_CHILD_PLAYER_DISCONNECT).onDisconnect().cancel();
                     getRoomReference(roomCode).removeValue();
                     finishedSelf=true;
+                    Intent i= new Intent(getApplicationContext(), TicTacOnlineRoom.class);
+                    startActivity(i);
                     finish();
                 }
             }
@@ -220,6 +223,7 @@ public class TicTacOnline extends AppCompatActivity {
     }
 
     private void performAction(ImageView  imageView, int selectedBoxPosition) {
+        MusicManager.getInstance().play(getApplicationContext(),R.raw.ttt_o_tone);
         if (playerTurn == thisPlayer) {
             boxPositions[selectedBoxPosition] = playerTurn;
             if(thisPlayer==PLAYER_NUM_1){

@@ -8,12 +8,12 @@ public class Constants {
 
     // Tic Tac
     public static final String ROOM_CODE_ELEMENTS= "abcdefghijklmnopqrstuvwxyz0123456789";
-    public static final int ROOM_CODE_SIZE=3;
+    public static final int ROOM_CODE_SIZE=6;
     public static final int PLAYER_NUM_1 = 1;
     public static final int PLAYER_NUM_2 = 2;
 
     //Space Shooter
-    public static final int GAME_FPS=30;
+    public static final int GAME_FPS=60;
     public static final int ONE_SEC=1000;
     public static final int SPACE_SHOOTER_SHOT_SPEED=30;
     public static final int SPACE_SHOOTER_SCORE_PER_UFO=10;

@@ -18,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.team.classicrealm.GameUtility.Constants;
+import com.team.classicrealm.GameUtility.MusicManager;
 import com.team.classicrealm.R;
 
 import java.util.ArrayList;
@@ -57,7 +58,6 @@ public class space_shooter_game_view extends View {
         super(context);
         this.context=context;
         init();
-        //starts in runUfoAnim()
         runnable=new Runnable() {
             @Override
             public void run() {
@@ -77,6 +77,7 @@ public class space_shooter_game_view extends View {
         Beam shot= new Beam(context);
         shot.setLoc(shooter.getLoc().x+shooter.getWidth()/2-(shot.getWidth()/2),shooter.getLoc().y-(shot.getHeight()));
         beamsShot.add(shot);
+        MusicManager.getInstance().play(context,R.raw.laser_sound_3);
     }
 
     private void init() {
@@ -149,7 +150,6 @@ public class space_shooter_game_view extends View {
                 beamsShot.remove(beamsShot.get(i));
                 curScore+=Constants.SPACE_SHOOTER_SCORE_PER_UFO;
             }
-
         }
         removeOutOfScreenBeam();
     }

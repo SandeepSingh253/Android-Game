@@ -9,8 +9,8 @@
 
     <ImageButton
         android:id="@+id/tttOnlineStartButton"
-        android:layout_width="175dp"
-        android:layout_height="54dp"
+        android:layout_width="160dp"
+        android:layout_height="53dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,8 +22,8 @@
 
     <ImageButton
         android:id="@+id/tttOfflineStartButton"
-        android:layout_width="175dp"
-        android:layout_height="59dp"
+        android:layout_width="157dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
@@ -36,15 +36,16 @@
 
     <ImageButton
         android:id="@+id/tttOnlineBackButton"
-        android:layout_width="169dp"
-        android:layout_height="55dp"
+        android:layout_width="146dp"
+        android:layout_height="54dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tttOfflineStartButton"
+        app:layout_constraintVertical_bias="0.504"
         app:srcCompat="@drawable/button_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

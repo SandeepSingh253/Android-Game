@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/tictactoe_page_player_selec_bkg"
-    tools:context=".TicTacToe.Online.TicTacOnlinePlayerSelec">
+    tools:context=".TicTacToe.Online.TicTacOnlineRoom">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
